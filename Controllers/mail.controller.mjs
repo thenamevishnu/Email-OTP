@@ -45,11 +45,20 @@ export const verify = async (request, response) => {
             status: false,
             message: "Invalid otp!"
         })
-        if(res.otp == otp) return response.status(200).send({
-            status: true,
-            message: "verified"
-        })
-        response.status(400).send({
+        if (res.otp == otp) {
+            if (res.verified) {
+                return response.status(200).send({
+                    status: true,
+                    message: "You're already verified"
+                })
+            }
+            await Mail.updateOne({ email }, { $set: { verified: true } })
+            return response.status(200).send({
+                status: true,
+                message: "verified"
+            })
+        }
+        return response.status(400).send({
             status: false,
             message: "Invalid OTP"
         }) 

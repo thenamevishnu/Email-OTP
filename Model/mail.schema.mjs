@@ -9,6 +9,10 @@ const schema = new Schema({
     otp: {
         type: Number
     },
+    verified: {
+        type: Boolean,
+        default: false
+    },
     deadline: {
         type: Number,
         default: 0

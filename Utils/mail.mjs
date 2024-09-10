@@ -27,6 +27,7 @@ export const sendOTP = async (to, subject="Email Verification") => {
                 } else {
                     await Mail.updateOne({ email: to }, {
                         $set: {
+                            verified: false,
                             otp,
                             deadline: Math.floor(new Date().getTime() / 1000) + 300
                         }
