@@ -8,6 +8,10 @@ const schema = new Schema({
     },
     otp: {
         type: String
+    },
+    deadline: {
+        type: Number,
+        default: 0
     }
 }, {
     timestamps: true
