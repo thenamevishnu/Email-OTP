@@ -13,9 +13,7 @@ export const send = async (request, response) => {
             message: "Enter a valid email!"
         })
         const res = await sendOTP(email)
-        return response.status(200).send({
-            res
-        })
+        return response.status(200).send(res)
     } catch (err) {
         console.log(err.message)
         return response.status(500).send({
