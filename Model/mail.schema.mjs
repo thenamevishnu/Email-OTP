@@ -7,7 +7,7 @@ const schema = new Schema({
         required: true
     },
     otp: {
-        type: String
+        type: Number
     },
     deadline: {
         type: Number,
