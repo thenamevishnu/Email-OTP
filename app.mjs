@@ -1,10 +1,16 @@
 import express, { json } from "express"
 import * as db from "./Configs/db.config.mjs"
 import mailRouter from "./Routers/mail.route.mjs"
+import cors from "cors"
 
 const app = express()
 
 db.config()
+
+app.use(cors({
+    origin: "*",
+    methods: "*"
+}))
 
 app.use(json())
 
